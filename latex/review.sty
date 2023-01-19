@@ -1,0 +1,185 @@
+% DOCUMENT CLASS
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesClass{review}[2023/01/19 Custom document class.]
+
+%
+%
+
+\LoadClass{article}
+
+%
+%
+% DOCUMENT FORMATTING
+%
+%
+
+\RequirePackage
+[%
+    top = 1in,
+    bottom = 1in,
+    left = 1in,
+    right = 2.3in
+]{geometry}
+
+%
+%
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+%
+%
+
+% Customize the document's headings (i.e., sections etc.).
+
+\RequirePackage{titlesec}
+
+% Arguments of the \titleformat command in order of appearance:
+% Command
+% Shape
+% Format
+% Label
+% Separation
+% Before code
+% After code
+
+\titleformat
+{\section}
+[block]
+{\sffamily\bfseries\large}
+{\thesection .}
+{1em}
+{\MakeUppercase}
+[]
+
+\titleformat
+{\subsection}
+[block]
+{\sffamily\bfseries\large}
+{\thesubsection .}
+{1em}
+{}
+[]
+
+%
+%
+
+% Packages used for the headers and footers.
+
+\RequirePackage{lastpage}
+\RequirePackage{fancyhdr}
+
+\fancyhead[L]{Version \today}
+\fancyhead[C]{}
+\fancyhead[R]{\thepage\ of \pageref*{LastPage}}
+
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+
+\pagestyle{fancy}
+
+%
+%
+% DOCUMENT LANGUAGE
+%
+%
+
+\RequirePackage[english]{babel}
+\RequirePackage{libertine}
+
+%
+%
+% DOCUMENT MATHEMATICS
+%
+%
+
+\RequirePackage{amsmath}
+% \RequirePackage{unicode-math}
+
+%
+%
+% DOCUMENT BASIC PACKAGES
+%
+%
+
+\RequirePackage{graphicx}
+\RequirePackage{lipsum}
+
+\RequirePackage[
+    colorlinks=true,
+    breaklinks
+]{hyperref}
+
+%
+%
+% BASIC AUTHORING PACKAGES
+%
+%
+
+% Create the document's title.
+\newcommand{\doctitle}[1]{%
+    {\LARGE\textbf{\textsf{#1}}}\\[1cm]
+    {\hspace*{\fill} Version \today}\\
+    \rule{\textwidth}{1pt}
+    \vspace{1cm}
+}
+
+%
+%
+
+% Add line numbers to the document.
+% \RequirePackage[right]{lineno}
+% \renewcommand{\linenumberfont}{
+%     \normalfont\bfseries\footnotesize
+% }
+% \linenumbers
+
+%
+%
+
+\RequirePackage[skins, breakable]{tcolorbox}
+\newcommand{\response}[1]
+{%
+    \begin{tcolorbox}[
+        breakable,
+        blanker,
+        width = 0.9\textwidth,
+        parbox = false,
+        enlarge left by=20pt
+    ]
+    \textbf{Response}:\ #1
+    \end{tcolorbox}
+}
+
+% Highlight text, among others.
+\RequirePackage{xcolor}
+\RequirePackage{soul}
+
+%
+%
+
+% Numbering of comments, statements etc.
+% Use the commands \stepfirst and \numitem.
+
+\newcounter{FirstNum}
+\newcounter{SecondNum}[FirstNum]
+
+\setcounter{FirstNum}{1}
+\setcounter{SecondNum}{0}
+
+\newcommand{\stepfirst}{
+    \stepcounter{FirstNum}
+}
+
+\newcommand{\numitem}{
+    \stepcounter{SecondNum}
+    \textbf{\theFirstNum.\theSecondNum.}\;
+}
+
+%
+%
+
+% Change the date format. It needs to be placed in the end.
+\RequirePackage[style=iso]{datetime2}
