@@ -1,7 +1,7 @@
 % DOCUMENT CLASS
 
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesClass{review}[2023/01/19 Custom document class.]
+\ProvidesClass{core}[2023/01/09 Custom document class.]
 
 %
 %
@@ -50,7 +50,7 @@
 {\sffamily\bfseries\large}
 {\thesection .}
 {1em}
-{\MakeUppercase}
+{\textsc}
 []
 
 \titleformat
@@ -106,6 +106,7 @@
 
 \RequirePackage{graphicx}
 \RequirePackage{lipsum}
+\RequirePackage{lettrine}
 
 \RequirePackage[
     colorlinks=true,
@@ -120,21 +121,11 @@
 
 % Create the document's title.
 \newcommand{\doctitle}[1]{%
-    {\LARGE\textbf{\textsf{#1}}}\\[1cm]
-    {\hspace*{\fill} Version \today}\\
-    \rule{\textwidth}{1pt}
+    {\huge\textbf{\textsf{#1}}}\\[1cm]
+    \rule{\textwidth}{1pt}\\
+    {\textit{Version \today}}
     \vspace{1cm}
 }
-
-%
-%
-
-% Add line numbers to the document.
-% \RequirePackage[right]{lineno}
-% \renewcommand{\linenumberfont}{
-%     \normalfont\bfseries\footnotesize
-% }
-% \linenumbers
 
 %
 %
@@ -154,8 +145,7 @@
 }
 
 % Highlight text, among others.
-\RequirePackage{xcolor}
-\RequirePackage{soul}
+\RequirePackage{xcolor,soul}
 
 %
 %
