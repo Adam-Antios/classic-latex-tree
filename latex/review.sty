@@ -47,7 +47,7 @@
 \titleformat
 {\section}
 [block]
-{\sffamily\bfseries\Large}
+{\sffamily\Large}
 {\thesection .}
 {1em}
 {\textsc}
@@ -56,7 +56,7 @@
 \titleformat
 {\subsection}
 [block]
-{\sffamily\bfseries\large}
+{\sffamily\large}
 {\thesubsection .}
 {1em}
 {}
@@ -121,9 +121,13 @@
 
 % Create the document's title.
 \newcommand{\doctitle}[1]{%
-    {\huge\textbf{\textsf{#1}}}\\[2cm]
-    {\hspace*{\fill}\textit{Version \today}}
-    \vspace{2cm}
+    {\LARGE \textsf{#1}}\\[0.5cm]
+    \textsf{\textit{Version \today}}\\[0.5cm]
+}
+
+\newcommand{\docauthors}[1]{%
+    {\large\textsf{#1}}
+    \vspace{1cm}
 }
 
 %
