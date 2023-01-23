@@ -47,7 +47,7 @@
 \titleformat
 {\section}
 [block]
-{\sffamily\bfseries\large}
+{\sffamily\bfseries\Large}
 {\thesection .}
 {1em}
 {\textsc}
@@ -121,10 +121,9 @@
 
 % Create the document's title.
 \newcommand{\doctitle}[1]{%
-    {\huge\textbf{\textsf{#1}}}\\[1cm]
-    \rule{\textwidth}{1pt}\\
-    {\textit{Version \today}}
-    \vspace{1cm}
+    {\huge\textbf{\textsf{#1}}}\\[2cm]
+    {\hspace*{\fill}\textit{Version \today}}
+    \vspace{2cm}
 }
 
 %
